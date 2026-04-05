@@ -4,18 +4,23 @@ const IMG_PATH = './images/';
 // --- 1. DATA TRIP ---
 const tripDB = [
     { 
-        id: 'lawu', name: 'LAWU', loc: 'JAWA TENGAH', alt: '3265 MDPL', price: 'IDR 1.450K', prog: 70, 
+        id: 'lawu', name: 'LAWU', loc: 'JAWA TENGAH', alt: '3265 MDPL', price: 'IDR 850K', prog: 70, 
         images: ['lawu4.jpg', 'lawu10.jpg', 'lawu6.jpg'], 
         desc: 'Gerbang menuju keindahan abadi di perbatasan Jawa.' 
     },
     { 
-        id: 'slamet', name: 'SLAMET', loc: 'JAWA TENGAH', alt: '3428 MDPL', price: 'IDR 1.200K', prog: 70, 
+        id: 'slamet', name: 'SLAMET', loc: 'JAWA TENGAH', alt: '3428 MDPL', price: 'IDR 850K', prog: 70, 
         images: ['slamet1.jpg', 'slamet3.jpg', 'slamet5.jpg'], 
         desc: 'Gunung tunggal terbesar di Jawa.' 
     },
     { 
-        id: 'merbabu', name: 'MERBABU', loc: 'JAWA TENGAH', alt: '3.145 MDPL', price: 'IDR 1.800K', prog: 30, 
+        id: 'merbabu', name: 'MERBABU', loc: 'JAWA TENGAH', alt: '3.145 MDPL', price: 'IDR 875K', prog: 30, 
         images: ['merbabu1.jpg', 'merbabu2.jpg', 'merbabu6.jpg'], 
+        desc: 'Padang sabana luas dan pemandangan lima gunung.' 
+    }
+     { 
+        id: 'Ciremai', name: 'CIREMAI', loc: 'JAWA BARAT', alt: '3.078 MDPL', price: 'IDR 750', prog: 70, 
+        images: ['ciremai1.jpg', 'ciremai3.jpg', 'ciremai5.jpg'], 
         desc: 'Padang sabana luas dan pemandangan lima gunung.' 
     }
 ];
