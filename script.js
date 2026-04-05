@@ -5,11 +5,11 @@ let activeTrip = null;
 
 // --- 1. DATA TRIP ---
 const tripDB = [
-    { id: 'lawu', name: 'LAWU', loc: 'JAWA TENGAH', alt: '3265 MDPL', price: 'IDR 1.450K', images: ['lawu4.jpg', 'lawu10.jpg', 'lawu6.jpg'], desc: 'Gerbang menuju keindahan abadi di perbatasan Jawa.' },
-    { id: 'slamet', name: 'SLAMET', loc: 'JAWA TENGAH', alt: '3428 MDPL', price: 'IDR 1.200K', images: ['slamet1.jpg', 'slamet3.jpg', 'slamet5.jpg'], desc: 'Gunung tunggal terbesar di Jawa. Menantang adrenalin.' },
-    { id: 'merbabu', name: 'MERBABU', loc: 'JAWA TENGAH', alt: '3.145 MDPL', price: 'IDR 1.800K', images: ['merbabu1.jpg', 'merbabu5.jpg', 'merbabu6.jpg'], desc: 'Padang sabana luas dan pemandangan lima gunung.' },
-    { id: 'ciremai', name: 'CIREMAI', loc: 'JAWA BARAT', alt: '3078 MDPL', price: 'IDR 1.100K', images: ['ciremai1.jpg', 'ciremai2.jpg', 'ciremai8.jpg'], desc: 'Atap Jawa Barat dengan tanjakan yang menguji mental.' },
-    { id: 'prau', name: 'PRAU', loc: 'JAWA TENGAH', alt: '2565 MDPL', price: 'IDR 950K', images: ['prau1.jpg', 'prau2.jpg', 'prau3.jpg'], desc: 'Golden Sunrise terbaik di Jawa, ramah untuk pemula.' }
+    { id: 'lawu', name: 'LAWU', loc: 'JAWA TENGAH', alt: '3265 MDPL', price: 'IDR 850K', images: ['lawu4.jpg', 'lawu10.jpg', 'lawu6.jpg'], desc: 'Gerbang menuju keindahan abadi di perbatasan Jawa.' },
+    { id: 'slamet', name: 'SLAMET', loc: 'JAWA TENGAH', alt: '3428 MDPL', price: 'IDR 850K', images: ['slamet1.jpg', 'slamet3.jpg', 'slamet5.jpg'], desc: 'Gunung tunggal terbesar di Jawa. Menantang adrenalin.' },
+    { id: 'merbabu', name: 'MERBABU', loc: 'JAWA TENGAH', alt: '3.145 MDPL', price: 'IDR 850K', images: ['merbabu1.jpg', 'merbabu5.jpg', 'merbabu6.jpg'], desc: 'Padang sabana luas dan pemandangan lima gunung.' },
+    { id: 'ciremai', name: 'CIREMAI', loc: 'JAWA BARAT', alt: '3078 MDPL', price: 'IDR 750K', images: ['ciremai1.jpg', 'ciremai3.jpg', 'ciremai5.jpg'], desc: 'Atap Jawa Barat dengan tanjakan yang menguji mental.' },
+    { id: 'prau', name: 'PRAU', loc: 'JAWA TENGAH', alt: '2565 MDPL', price: 'IDR 750K', images: ['prau1.jpg', 'prau2.jpg', 'prau3.jpg'], desc: 'Golden Sunrise terbaik di Jawa, ramah untuk pemula.' }
 ];
 
 // --- 2. DATA VIDEO ---
