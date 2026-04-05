@@ -15,7 +15,7 @@ const tripDB = [
     },
     { 
         id: 'merbabu', name: 'MERBABU', loc: 'JAWA TENGAH', alt: '3.145 MDPL', price: 'IDR 1.800K', prog: 30, 
-        images: ['merbabu1.jpg', 'merbabu2.jpg', 'merbabu5.jpg'], 
+        images: ['merbabu1.jpg', 'merbabu5.jpg', 'merbabu6.jpg'], 
         desc: 'Padang sabana luas dan pemandangan lima gunung.' 
     }
 ];
