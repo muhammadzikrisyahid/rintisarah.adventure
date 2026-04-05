@@ -25,20 +25,20 @@
     </div>
 
     <nav>
-        <div class="logo" onclick="lenis.scrollTo(0)">R<span>.</span>A</div>
+        <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">R<span>.</span>A</div>
         <div class="hud-center">
             <div class="hud-item" onclick="toggleTheme()">THEME</div>
-            <div class="hud-item" onclick="lenis.scrollTo('#team')">TEAM</div>
-            <div class="hud-item" onclick="lenis.scrollTo('#game-section')">TRAINING</div>
+            <div class="hud-item" onclick="document.getElementById('team').scrollIntoView({behavior: 'smooth'})">TEAM</div>
+            <div class="hud-item" onclick="document.getElementById('game-section').scrollIntoView({behavior: 'smooth'})">TRAINING</div>
         </div>
-        <button class="btn-primary nav-btn" onclick="lenis.scrollTo('#archive')">JOIN TRIP</button>
+        <button class="btn-primary nav-btn" onclick="document.getElementById('archive').scrollIntoView({behavior: 'smooth'})">JOIN TRIP</button>
     </nav>
 
     <main id="main-scroll">
         <section class="hero">
             <div class="hero-visual">
                 <div class="vignette"></div>
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600" class="hero-img">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600" class="hero-img" alt="Mountain Hero">
             </div>
             <div class="hero-content">
                 <h2 id="h-title">EXPLORE<br>THE SUMMIT</h2>
@@ -47,7 +47,7 @@
         </section>
 
         <div class="video-wrapper">
-            <iframe src="https://youtu.be/VOL5e9zGQrA?si=h-oQEjCu5C4yVEKp" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VOL5e9zGQrA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
 
         <section id="archive" class="section">
@@ -85,7 +85,7 @@
         <div class="scene-body">
             <div class="album-wrapper">
                 <div class="main-img-container">
-                    <img id="d-img" src="" class="modal-img">
+                    <img id="d-img" src="" class="modal-img" alt="Detail Image">
                     <div class="slider-controls">
                         <button onclick="prevImg()" class="slide-btn">PREV</button>
                         <button onclick="nextImg()" class="slide-btn">NEXT</button>
@@ -104,6 +104,7 @@
             </div>
         </div>
     </div>
+    
 
     <script src="script.js"></script>
 </body>
