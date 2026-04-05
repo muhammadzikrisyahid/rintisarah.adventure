@@ -22,6 +22,34 @@ body {
     overflow-x: hidden;
 }
 
+/* Video Archive Styling */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.video-card {
+    background: var(--card);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    filter: grayscale(1);
+    transition: 0.5s;
+}
+
+.video-card:hover iframe {
+    filter: grayscale(0);
+}
+
+.v-info { padding: 20px; }
+.v-info h4 { font-family: 'Unbounded'; font-size: 0.9rem; color: var(--accent); }
 /* Overlays */
 .noise-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.03; pointer-events: none; z-index: 9999; }
 #cursor { position: fixed; width: 15px; height: 15px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transform: translate(-50%, -50%); }
@@ -80,7 +108,7 @@ nav { position: fixed; top: 0; width: 100%; padding: 30px 50px; display: flex; j
 .game-ready-text { font-family:'Unbounded'; color:var(--accent); font-size: 3rem; }
 .score-overlay { position: absolute; top: 20px; left: 30px; font-family: 'Unbounded'; color: var(--accent); }
 
-/* Modal Album */
+/* Modal Detail Trip */
 #detail-scene { position: fixed; inset: 0; background: var(--bg); z-index: 12000; display: none; padding: 80px 50px 50px; overflow-y: auto; }
 .scene-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; }
 .main-img-container { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #000; height: 500px; }
