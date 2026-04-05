@@ -34,6 +34,7 @@
             <div class="hud-item" onclick="toggleTheme()">THEME</div>
             <div class="hud-item" onclick="lenis.scrollTo('#archive')">MISSIONS</div>
             <div class="hud-item" onclick="lenis.scrollTo('#video-archive')">CINEMATIC</div>
+            <div class="hud-item mobile-only" onclick="lenis.scrollTo('#quotes')">STORIES</div>
             <div class="hud-item mobile-only" onclick="lenis.scrollTo('#team')">CREW</div>
         </div>
         <button class="btn-primary nav-btn desktop-only" onclick="lenis.scrollTo('#team')">CREW</button>
@@ -43,7 +44,7 @@
         <section class="hero">
             <div class="hero-visual">
                 <div class="vignette"></div>
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600" class="hero-img">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600" class="hero-img" alt="Mountain View">
             </div>
             <div class="hero-content">
                 <h2 id="h-title">EXPLORE<br>THE SUMMIT</h2>
@@ -66,9 +67,18 @@
             <div class="video-grid" id="video-container"></div>
         </section>
 
+        <section id="quotes" class="section">
+            <div class="sec-header">
+                <span class="hud-label">// 03 SUMMIT STORIES</span>
+                <h2 class="sec-title-large">KATA MEREKA</h2>
+            </div>
+            <div class="quote-grid" id="quote-container">
+                </div>
+        </section>
+
         <section id="team" class="section">
             <div class="sec-header">
-                <span class="hud-label">// 03 MEET THE CREW</span>
+                <span class="hud-label">// 04 MEET THE CREW</span>
             </div>
             <div class="team-character-select" id="team-container"></div>
         </section>
@@ -79,7 +89,7 @@
         <div class="scene-body">
             <div class="album-wrapper">
                 <div class="main-img-container">
-                    <img id="d-img" src="" class="modal-img">
+                    <img id="d-img" src="" class="modal-img" alt="Detail Trip">
                     <div class="slider-controls">
                         <button onclick="prevImg()" class="slide-btn">PREV</button>
                         <button onclick="nextImg()" class="slide-btn">NEXT</button>
@@ -94,6 +104,7 @@
                     <div class="stat-box"><small>ALTITUDE</small><br><b id="d-alt"></b></div>
                     <div class="stat-box"><small>PRICE</small><br><b id="d-price"></b></div>
                 </div>
+                <button class="btn-primary" style="width: 100%; margin-top: 20px;">BOOK NOW</button>
             </div>
         </div>
     </div>
