@@ -21,13 +21,22 @@
     </div>
 
     <nav>
-        <div class="logo">R<span>.</span>A</div>
-        <div class="hud-center">
+        <div class="logo" onclick="lenis.scrollTo(0)">R<span>.</span>A</div>
+        
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="hamburger-label">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </label>
+
+        <div class="hud-center menu-items">
             <div class="hud-item" onclick="toggleTheme()">THEME</div>
             <div class="hud-item" onclick="lenis.scrollTo('#archive')">MISSIONS</div>
             <div class="hud-item" onclick="lenis.scrollTo('#video-archive')">CINEMATIC</div>
+            <div class="hud-item mobile-only" onclick="lenis.scrollTo('#team')">CREW</div>
         </div>
-        <button class="btn-primary nav-btn" onclick="lenis.scrollTo('#team')">CREW</button>
+        <button class="btn-primary nav-btn desktop-only" onclick="lenis.scrollTo('#team')">CREW</button>
     </nav>
 
     <main id="main-scroll">
