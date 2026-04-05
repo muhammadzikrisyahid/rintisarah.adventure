@@ -21,9 +21,16 @@ const tripDB = [
 ];
 
 // --- 2. DATA VIDEO ---
+// Link sudah diperbaiki ke format /embed/ agar bisa diputar di web
 const videoDB = [
-    { title: 'PENDAKIAN LINTAS JALUR RINJANI via SEMBALUN-TOREAN 5 Hari 4 Malam', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' },
-    { title: 'GUNUNG GEDE VIA PUTRI : KABUT LEMBUT DAN HUJAN', url:'youtube.com/embed/zwFTTr6OL98.' }
+    { 
+        title: 'PENDAKIAN LINTAS JALUR RINJANI via SEMBALUN-TOREAN 5 Hari 4 Malam', 
+        url: 'https://www.youtube.com/embed/VOL5e9zGQrA' 
+    },
+    { 
+        title: 'GUNUNG GEDE VIA PUTRI : KABUT LEMBUT DAN HUJAN', 
+        url: 'https://www.youtube.com/embed/zwFTTr6OL98' 
+    }
 ];
 
 // --- 3. DATA TEAM ---
@@ -46,6 +53,7 @@ function startApp() { gsap.to("#intro-layer", { y: "-100%", duration: 1.2, ease:
 // Render Missions
 function renderMissions(filter = "") {
     const container = document.getElementById('grid-container');
+    if(!container) return;
     container.innerHTML = tripDB.filter(t => t.name.includes(filter.toUpperCase())).map(t => `
         <div class="card" onclick="openTrip('${t.id}')">
             <div class="c-media"><img src="${IMG_PATH + t.images[0]}"></div>
@@ -60,9 +68,15 @@ function renderMissions(filter = "") {
 // Render Videos
 function renderVideos() {
     const container = document.getElementById('video-container');
+    if(!container) return;
     container.innerHTML = videoDB.map(v => `
         <div class="video-card">
-            <iframe src="${v.url}" frameborder="0" allowfullscreen></iframe>
+            <iframe 
+                src="${v.url}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
             <div class="v-info"><h4>${v.title}</h4></div>
         </div>
     `).join('');
@@ -83,6 +97,7 @@ window.openTrip = (id) => {
 
 function updateSlider() {
     const imgEl = document.getElementById('d-img');
+    if(!imgEl) return;
     imgEl.src = IMG_PATH + currentActiveTrip.images[currentImgIndex];
     document.getElementById('img-counter').innerText = `${currentImgIndex + 1} / ${currentActiveTrip.images.length}`;
 }
@@ -100,12 +115,16 @@ document.querySelectorAll('.hud-item').forEach(item => {
 // Init
 renderMissions();
 renderVideos();
-document.getElementById('team-container').innerHTML = teamDB.map(t => `
-    <div class="char-card">
-        <img src="${IMG_PATH + t.img}">
-        <div class="char-info">
-            <h3 style="font-family:'Unbounded'; font-size:1rem;">${t.name}</h3>
-            <p style="color:var(--accent); font-size:0.8rem;">${t.role}</p>
+
+const teamContainer = document.getElementById('team-container');
+if(teamContainer) {
+    teamContainer.innerHTML = teamDB.map(t => `
+        <div class="char-card">
+            <img src="${IMG_PATH + t.img}">
+            <div class="char-info">
+                <h3 style="font-family:'Unbounded'; font-size:1rem;">${t.name}</h3>
+                <p style="color:var(--accent); font-size:0.8rem;">${t.role}</p>
+            </div>
         </div>
-    </div>
-`).join('');
+    `).join('');
+}
