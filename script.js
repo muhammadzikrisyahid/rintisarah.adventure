@@ -1,5 +1,7 @@
-// --- 0. CONFIGURATION ---
+// --- 0. CONFIGURATION & STATE ---
 const IMG_PATH = './images/'; 
+let currentImgIndex = 0;
+let activeTrip = null;
 
 // --- 1. DATA TRIP ---
 const tripDB = [
@@ -20,9 +22,7 @@ const videoDB = [
 const quoteDB = [
     { text: "Bukan tentang puncaknya, tapi tentang teman perjalanannya. Rintis Arah mantul!", author: "Dzikri Syahid", img: 'jeka.jpg' },
     { text: "Logistik gila sih, mewah banget buat ukuran di gunung. Guide-nya juga asik.", author: "Muhammad Abid", img: 'abid.jpg' },
-    { text: "Pertama kali muncak dan nggak kapok karena krunya sabar banget.", author: "Tegar Budi", img: 'tegar.jpg' },
-    { text: "Sunrise di Dieng bareng tim ini bener-bener gak terlupakan. Golden sunrise!", author: "Siska Amelia", img: 'ciremai1.jpg' },
-    { text: "Gak nyesel pilih Rintis Arah. Next trip kita hajar Rinjani bareng!", author: "Andi Wijaya", img: 'slamet1.jpg' }
+    { text: "Pertama kali muncak dan nggak kapok karena krunya sabar banget.", author: "Tegar Budi", img: 'tegar.jpg' }
 ];
 
 // --- 4. DATA TEAM ---
@@ -32,7 +32,7 @@ const teamDB = [
     { name: 'M. Dzikri Syahid.', role: 'CHIEF GUIDE', img: 'jeka.jpg' }
 ];
 
-// --- CORE SYSTEM ---
+// --- CORE SYSTEM (LENIS) ---
 const lenis = new Lenis();
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
@@ -63,7 +63,6 @@ function renderVideos() {
     `).join('');
 }
 
-// FUNGSI RENDER QUOTES DENGAN FOTO PROFIL
 function renderQuotes() {
     const container = document.getElementById('quote-container');
     if(!container) return;
@@ -81,19 +80,45 @@ function renderQuotes() {
     `).join('');
 }
 
-// --- MODAL SYSTEM ---
+// --- MODAL & SLIDER SYSTEM ---
 window.openTrip = (id) => {
-    let trip = tripDB.find(x => x.id === id);
-    document.getElementById('d-name').innerText = trip.name;
-    document.getElementById('d-alt').innerText = trip.alt;
-    document.getElementById('d-price').innerText = trip.price;
-    document.getElementById('d-desc').innerText = trip.desc;
-    document.getElementById('d-img').src = IMG_PATH + trip.images[0];
+    activeTrip = tripDB.find(x => x.id === id);
+    currentImgIndex = 0; 
+    updateModal();
     document.getElementById('detail-scene').style.display = 'block';
-    gsap.fromTo("#detail-scene", { opacity: 0 }, { opacity: 1 });
+    gsap.fromTo("#detail-scene", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4 });
 };
 
-window.closeTrip = () => { document.getElementById('detail-scene').style.display = 'none'; };
+function updateModal() {
+    const imgElement = document.getElementById('d-img');
+    // Animasi ganti gambar
+    gsap.to(imgElement, { opacity: 0, duration: 0.2, onComplete: () => {
+        imgElement.src = IMG_PATH + activeTrip.images[currentImgIndex];
+        gsap.to(imgElement, { opacity: 1, duration: 0.2 });
+    }});
+
+    document.getElementById('d-name').innerText = activeTrip.name;
+    document.getElementById('d-alt').innerText = activeTrip.alt;
+    document.getElementById('d-price').innerText = activeTrip.price;
+    document.getElementById('d-desc').innerText = activeTrip.desc;
+    document.getElementById('img-counter').innerText = `${currentImgIndex + 1} / ${activeTrip.images.length}`;
+}
+
+window.nextImg = () => {
+    currentImgIndex = (currentImgIndex + 1) % activeTrip.images.length;
+    updateModal();
+};
+
+window.prevImg = () => {
+    currentImgIndex = (currentImgIndex - 1 + activeTrip.images.length) % activeTrip.images.length;
+    updateModal();
+};
+
+window.closeTrip = () => { 
+    gsap.to("#detail-scene", { opacity: 0, duration: 0.3, onComplete: () => {
+        document.getElementById('detail-scene').style.display = 'none';
+    }});
+};
 
 // --- INIT ---
 renderMissions();
@@ -108,3 +133,6 @@ document.getElementById('team-container').innerHTML = teamDB.map(t => `
         </div>
     </div>
 `).join('');
+
+// Close with ESC
+document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeTrip(); });
