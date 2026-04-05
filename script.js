@@ -20,7 +20,7 @@ const videoDB = [
 
 // --- 3. DATA TESTIMONI ---
 const quoteDB = [
-    { text: "Bukan tentang puncaknya, tapi tentang teman perjalanannya. Rintis Arah mantul!", author: "Dzikri Syahid", img: 'jeka.jpg' },
+    { text: "pendakian pertamaku bareng sm  rintis arah langsung ke atap jabar. Super fun karena ketemu temen-temen baru dan walaupun aku pemula dan jalannya lama rintis arah selalu didampingin dari awal smp akhir. Sukses terus buat rintiss arahh!!", author: "Anaka Irsa S.K.L", img: 'irsa.jpg' },
     { text: "Logistik gila sih, mewah banget buat ukuran di gunung. Guide-nya juga asik.", author: "Muhammad Abid", img: 'abid.jpg' },
     { text: "Pertama kali muncak dan nggak kapok karena krunya sabar banget.", author: "Tegar Budi", img: 'tegar.jpg' }
 ];
