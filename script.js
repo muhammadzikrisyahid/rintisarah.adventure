@@ -23,7 +23,7 @@ const tripDB = [
 // --- 2. DATA VIDEO ---
 const videoDB = [
     { title: 'PENDAKIAN LINTAS JALUR RINJANI via SEMBALUN-TOREAN 5 Hari 4 Malam', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' },
-    { title: 'GUNUNG GEDE VIA PUTRI : KABUT LEMBUT DAN HUJAN', url: 'https://youtu.be/zwFTTr6OL98?si=xvs_4ypFUIT1ZcLc' }
+    { title: 'GUNUNG GEDE VIA PUTRI : KABUT LEMBUT DAN HUJAN', url:'https://www.youtube.com/embed/VOL5e9zGQrA' }
 ];
 
 // --- 3. DATA TEAM ---
