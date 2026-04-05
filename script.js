@@ -1,6 +1,7 @@
-const IMG_PATH = 'images/'; 
+// --- 0. CONFIGURATION ---
+const IMG_PATH = './images/'; 
 
-// 1. DATA GUNUNG
+// --- 1. DATA TRIP ---
 const tripDB = [
     { 
         id: 'lawu', name: 'LAWU', loc: 'JAWA TENGAH', alt: '3265 MDPL', price: 'IDR 1.450K', prog: 70, 
@@ -10,7 +11,7 @@ const tripDB = [
     { 
         id: 'slamet', name: 'SLAMET', loc: 'JAWA TENGAH', alt: '3428 MDPL', price: 'IDR 1.200K', prog: 70, 
         images: ['slamet1.jpg', 'slamet3.jpg', 'slamet5.jpg'], 
-        desc: 'Gunung tunggal terbesar di Jawa. Menantang adrenalin.' 
+        desc: 'Gunung tunggal terbesar di Jawa.' 
     },
     { 
         id: 'merbabu', name: 'MERBABU', loc: 'JAWA TENGAH', alt: '3.145 MDPL', price: 'IDR 1.800K', prog: 30, 
@@ -19,13 +20,13 @@ const tripDB = [
     }
 ];
 
-// 2. DATA VIDEO ALBUM
+// --- 2. DATA VIDEO ---
 const videoDB = [
     { title: 'MT. SLAMET DOCUMENTARY', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' },
-    { title: 'LAWU MERBABU HIGHLIGHT', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' } // Ganti ID video sesuai keinginan
+    { title: 'LAWU HIGHLIGHT', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' }
 ];
 
-// 3. DATA TEAM
+// --- 3. DATA TEAM ---
 const teamDB = [
     { name: 'Tegar Budi Santoso.', role: 'EXPEDITION LEAD', img: 'tegar.jpg', xp: '10 Yrs Experience' },
     { name: 'Muhammad Abid Asa.', role: 'LOGISTIC & MEDIC', img: 'abid.jpg', xp: 'Outdoor First-Aid' },
@@ -35,27 +36,28 @@ const teamDB = [
 // --- CORE SYSTEM ---
 let currentImgIndex = 0;
 let currentActiveTrip = null;
+
 const lenis = new Lenis();
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
 
 function startApp() { gsap.to("#intro-layer", { y: "-100%", duration: 1.2, ease: "expo.inOut" }); }
-document.addEventListener('mousemove', e => { gsap.to("#cursor", { x: e.clientX, y: e.clientY, duration: 0.1 }); });
 
-// --- RENDERERS ---
+// Render Missions
 function renderMissions(filter = "") {
     const container = document.getElementById('grid-container');
     container.innerHTML = tripDB.filter(t => t.name.includes(filter.toUpperCase())).map(t => `
         <div class="card" onclick="openTrip('${t.id}')">
             <div class="c-media"><img src="${IMG_PATH + t.images[0]}"></div>
             <div class="c-body">
-                <small style="color:var(--accent);">${t.loc}</small>
-                <h3 style="font-family:'Unbounded';">${t.name}</h3>
+                <small style="color:var(--accent); font-weight:700;">${t.loc}</small>
+                <h3 style="font-family:'Unbounded'; font-size:1.2rem;">${t.name}</h3>
             </div>
         </div>
     `).join('');
 }
 
+// Render Videos
 function renderVideos() {
     const container = document.getElementById('video-container');
     container.innerHTML = videoDB.map(v => `
@@ -66,7 +68,7 @@ function renderVideos() {
     `).join('');
 }
 
-// --- MODAL & SLIDER ---
+// Modal Slider
 window.openTrip = (id) => {
     currentActiveTrip = tripDB.find(x => x.id === id);
     currentImgIndex = 0;
@@ -89,15 +91,21 @@ window.nextImg = () => { currentImgIndex = (currentImgIndex + 1) % currentActive
 window.prevImg = () => { currentImgIndex = (currentImgIndex - 1 + currentActiveTrip.images.length) % currentActiveTrip.images.length; updateSlider(); };
 window.closeTrip = () => { document.getElementById('detail-scene').style.display = 'none'; };
 
-// --- INIT ---
+// Close Menu Mobile on Click
+const menuToggle = document.getElementById('menu-toggle');
+document.querySelectorAll('.hud-item').forEach(item => {
+    item.addEventListener('click', () => { if(menuToggle) menuToggle.checked = false; });
+});
+
+// Init
 renderMissions();
 renderVideos();
 document.getElementById('team-container').innerHTML = teamDB.map(t => `
     <div class="char-card">
         <img src="${IMG_PATH + t.img}">
         <div class="char-info">
-            <h3>${t.name}</h3>
-            <p>${t.role}</p>
+            <h3 style="font-family:'Unbounded'; font-size:1rem;">${t.name}</h3>
+            <p style="color:var(--accent); font-size:0.8rem;">${t.role}</p>
         </div>
     </div>
 `).join('');
