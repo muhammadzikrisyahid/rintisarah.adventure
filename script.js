@@ -18,11 +18,7 @@ const tripDB = [
         images: ['merbabu1.jpg', 'merbabu2.jpg', 'merbabu6.jpg'], 
         desc: 'Padang sabana luas dan pemandangan lima gunung.' 
     }
-     { 
-        id: 'Ciremai', name: 'CIREMAI', loc: 'JAWA BARAT', alt: '3.078 MDPL', price: 'IDR 750', prog: 70, 
-        images: ['ciremai1.jpg', 'ciremai3.jpg', 'ciremai5.jpg'], 
-        desc: 'Padang sabana luas dan pemandangan lima gunung.' 
-    }
+    
 ];
 
 // --- 2. DATA VIDEO ---
