@@ -139,3 +139,40 @@ nav { position: fixed; top: 0; width: 100%; padding: 30px 50px; display: flex; j
     .main-img-container { height: 250px; }
     .modal-info h1 { font-size: 2rem; }
 }
+/* --- Summit Stories Styling --- */
+.quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.quote-card {
+    background: var(--card);
+    padding: 35px;
+    border-radius: 20px;
+    border-left: 5px solid var(--accent);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quote-card:hover {
+    transform: translateY(-8px);
+    background: #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.quote-card p {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.quote-card small {
+    color: var(--accent);
+    font-family: 'Unbounded';
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
