@@ -1,7 +1,7 @@
 // --- 0. CONFIGURATION ---
 const IMG_PATH = './images/'; 
 
-// --- 1. DATA TRIP ---
+// --- 1. DATA TRIP (Ditambah Ciremai & Prau) ---
 const tripDB = [
     { 
         id: 'lawu', name: 'LAWU', loc: 'JAWA TENGAH', alt: '3265 MDPL', price: 'IDR 1.450K', prog: 70, 
@@ -11,58 +11,69 @@ const tripDB = [
     { 
         id: 'slamet', name: 'SLAMET', loc: 'JAWA TENGAH', alt: '3428 MDPL', price: 'IDR 1.200K', prog: 70, 
         images: ['slamet1.jpg', 'slamet3.jpg', 'slamet5.jpg'], 
-        desc: 'Gunung tunggal terbesar di Jawa.' 
+        desc: 'Gunung tunggal terbesar di Jawa. Menantang adrenalin.' 
     },
     { 
         id: 'merbabu', name: 'MERBABU', loc: 'JAWA TENGAH', alt: '3.145 MDPL', price: 'IDR 1.800K', prog: 30, 
         images: ['merbabu1.jpg', 'merbabu5.jpg', 'merbabu6.jpg'], 
         desc: 'Padang sabana luas dan pemandangan lima gunung.' 
+    },
+    { 
+        id: 'ciremai', name: 'CIREMAI', loc: 'JAWA BARAT', alt: '3078 MDPL', price: 'IDR 1.100K', prog: 50, 
+        images: ['ciremai1.jpg', 'ciremai2.jpg', 'ciremai8.jpg'], 
+        desc: 'Atap Jawa Barat dengan tanjakan yang menguji mental.' 
+    },
+    { 
+        id: 'prau', name: 'PRAU', loc: 'JAWA TENGAH', alt: '2565 MDPL', price: 'IDR 950K', prog: 90, 
+        images: ['prau1.jpg', 'prau2.jpg', 'prau3.jpg'], 
+        desc: 'Golden Sunrise terbaik di Jawa, ramah untuk pemula.' 
     }
-    
-    
 ];
 
-// --- 2. DATA VIDEO ---
+// --- 2. DATA VIDEO (Link Embed Diperbaiki) ---
 const videoDB = [
-    { title: 'PENDAKIAN LINTAS JALUR RINJANI via SEMBALUN-TOREAN 5 Hari 4 Malam', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' },
-    { title: 'GUNUNG GEDE VIA PUTRI : KABUT LEMBUT DAN HUJAN', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' }
+    { title: 'RINJANI LINTAS JALUR', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' },
+    { title: 'GUNUNG GEDE VIA PUTRI', url: 'https://www.youtube.com/embed/zwFTTr6OL98' }
 ];
 
-// --- 3. DATA TEAM ---
+// --- 3. DATA TESTIMONI ---
+const quoteDB = [
+    { text: "Bukan tentang puncaknya, tapi tentang teman perjalanannya. Rintis Arah mantul!", author: "Dzikri Syahid" },
+    { text: "Logistik gila sih, mewah banget buat ukuran di gunung. Guide-nya juga asik.", author: "Muhammad Abid" },
+    { text: "Pertama kali muncak dan nggak kapok karena krunya sabar banget.", author: "Tegar Budi" }
+];
+
+// --- 4. DATA TEAM ---
 const teamDB = [
-    { name: 'Tegar Budi Santoso.', role: 'EXPEDITION LEAD', img: 'tegar.jpg', xp: '10 Yrs Experience' },
-    { name: 'Muhammad Abid Asa.', role: 'LOGISTIC & MEDIC', img: 'abid.jpg', xp: 'Outdoor First-Aid' },
-    { name: 'M. Dzikri Syahid.', role: 'CHIEF GUIDE', img: 'jeka.jpg', xp: 'Certified Guide' }
+    { name: 'Tegar Budi Santoso.', role: 'EXPEDITION LEAD', img: 'tegar.jpg' },
+    { name: 'Muhammad Abid Asa.', role: 'LOGISTIC & MEDIC', img: 'abid.jpg' },
+    { name: 'M. Dzikri Syahid.', role: 'CHIEF GUIDE', img: 'jeka.jpg' }
 ];
 
 // --- CORE SYSTEM ---
-let currentImgIndex = 0;
-let currentActiveTrip = null;
-
 const lenis = new Lenis();
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
 
 function startApp() { gsap.to("#intro-layer", { y: "-100%", duration: 1.2, ease: "expo.inOut" }); }
 
-// Render Missions
+// --- RENDERERS ---
 function renderMissions(filter = "") {
     const container = document.getElementById('grid-container');
+    if(!container) return;
     container.innerHTML = tripDB.filter(t => t.name.includes(filter.toUpperCase())).map(t => `
         <div class="card" onclick="openTrip('${t.id}')">
             <div class="c-media"><img src="${IMG_PATH + t.images[0]}"></div>
             <div class="c-body">
                 <small style="color:var(--accent); font-weight:700;">${t.loc}</small>
-                <h3 style="font-family:'Unbounded'; font-size:1.2rem;">${t.name}</h3>
+                <h3 style="font-family:'Unbounded'; font-size:1.1rem;">${t.name}</h3>
             </div>
         </div>
     `).join('');
 }
 
-// Render Videos
 function renderVideos() {
-    const container = document.getElementById('video-container');
-    container.innerHTML = videoDB.map(v => `
+    document.getElementById('video-container').innerHTML = videoDB.map(v => `
         <div class="video-card">
             <iframe src="${v.url}" frameborder="0" allowfullscreen></iframe>
             <div class="v-info"><h4>${v.title}</h4></div>
@@ -70,38 +81,33 @@ function renderVideos() {
     `).join('');
 }
 
-// Modal Slider
+function renderQuotes() {
+    document.getElementById('quote-container').innerHTML = quoteDB.map(q => `
+        <div class="quote-card">
+            <p>"${q.text}"</p>
+            <small>- ${q.author}</small>
+        </div>
+    `).join('');
+}
+
+// --- MODAL SLIDER ---
 window.openTrip = (id) => {
-    currentActiveTrip = tripDB.find(x => x.id === id);
-    currentImgIndex = 0;
-    document.getElementById('d-name').innerText = currentActiveTrip.name;
-    document.getElementById('d-alt').innerText = currentActiveTrip.alt;
-    document.getElementById('d-price').innerText = currentActiveTrip.price;
-    document.getElementById('d-desc').innerText = currentActiveTrip.desc;
-    updateSlider();
+    let trip = tripDB.find(x => x.id === id);
+    document.getElementById('d-name').innerText = trip.name;
+    document.getElementById('d-alt').innerText = trip.alt;
+    document.getElementById('d-price').innerText = trip.price;
+    document.getElementById('d-desc').innerText = trip.desc;
+    document.getElementById('d-img').src = IMG_PATH + trip.images[0];
     document.getElementById('detail-scene').style.display = 'block';
     gsap.fromTo("#detail-scene", { opacity: 0 }, { opacity: 1 });
 };
 
-function updateSlider() {
-    const imgEl = document.getElementById('d-img');
-    imgEl.src = IMG_PATH + currentActiveTrip.images[currentImgIndex];
-    document.getElementById('img-counter').innerText = `${currentImgIndex + 1} / ${currentActiveTrip.images.length}`;
-}
-
-window.nextImg = () => { currentImgIndex = (currentImgIndex + 1) % currentActiveTrip.images.length; updateSlider(); };
-window.prevImg = () => { currentImgIndex = (currentImgIndex - 1 + currentActiveTrip.images.length) % currentActiveTrip.images.length; updateSlider(); };
 window.closeTrip = () => { document.getElementById('detail-scene').style.display = 'none'; };
 
-// Close Menu Mobile on Click
-const menuToggle = document.getElementById('menu-toggle');
-document.querySelectorAll('.hud-item').forEach(item => {
-    item.addEventListener('click', () => { if(menuToggle) menuToggle.checked = false; });
-});
-
-// Init
+// --- INIT ---
 renderMissions();
 renderVideos();
+renderQuotes();
 document.getElementById('team-container').innerHTML = teamDB.map(t => `
     <div class="char-card">
         <img src="${IMG_PATH + t.img}">
