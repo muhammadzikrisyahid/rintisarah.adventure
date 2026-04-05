@@ -29,9 +29,26 @@ const tripDB = [
 ];
 
 const teamDB = [
-    { name: 'Tegar Budi Santoso.', role: 'EXPEDITION LEAD', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400', xp: '10 Yrs Experience' },
-    { name: 'Muhammad Abid Asa.', role: 'LOGISTIC & MEDIC', img: '/Users/test/Downloads/RINTISJEKA/images/abid.jpeg', xp: 'Outdoor First-Aid' },
-    { name: 'M. Dzikri Syahid.', role: 'CHIEF GUIDE', img: '/Users/test/Downloads/RINTISJEKA/images/Muhammad Dzikri Syahid.jpeg', xp: 'Certified Guide' }
+    { 
+        name: 'Tegar Budi Santoso.', 
+        role: 'EXPEDITION LEAD', 
+        img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400', 
+        xp: '10 Yrs Experience' 
+    },
+    { 
+        name: 'Muhammad Abid Asa.', 
+        role: 'LOGISTIC & MEDIC', 
+        // Pastikan link valid dan kutip ditutup
+        img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400', 
+        xp: 'Outdoor First-Aid' 
+    },
+    { 
+        name: 'M. Dzikri Syahid.', 
+        role: 'CHIEF GUIDE', 
+        // Gunakan relative path, jangan ambil dari folder Downloads
+        img: 'images/muhammad-dzikri-syahid.jpeg', 
+        xp: 'Certified Guide' 
+    }
 ];
 
 // --- CORE SYSTEM ---
