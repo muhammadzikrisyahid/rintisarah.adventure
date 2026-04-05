@@ -22,8 +22,8 @@ const tripDB = [
 
 // --- 2. DATA VIDEO ---
 const videoDB = [
-    { title: 'MT. SLAMET DOCUMENTARY', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' },
-    { title: 'LAWU HIGHLIGHT', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' }
+    { title: 'PENDAKIAN LINTAS JALUR RINJANI via SEMBALUN-TOREAN 5 Hari 4 Malam', url: 'https://www.youtube.com/embed/VOL5e9zGQrA' },
+    { title: 'GUNUNG GEDE VIA PUTRI : KABUT LEMBUT DAN HUJAN', url: 'https://youtu.be/zwFTTr6OL98?si=xvs_4ypFUIT1ZcLc' }
 ];
 
 // --- 3. DATA TEAM ---
