@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>RINTIS ARAH // EXPEDITION ARCHIVE</title>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -22,18 +22,14 @@
         <div class="hud-center">
             <div class="hud-item" onclick="lenis.scrollTo('#vision')">VISION</div>
             <div class="hud-item" onclick="lenis.scrollTo('#archive')">MISSIONS</div>
+            <div class="hud-item" onclick="lenis.scrollTo('#video-archive')">CINEMATIC</div>
             <div class="hud-item" onclick="lenis.scrollTo('#education')">STUDY</div>
             <div class="hud-item" onclick="lenis.scrollTo('#team')">CREW</div>
         </div>
     </nav>
 
     <main id="main-scroll">
-        <section class="hero">
-            <div class="vignette"></div>
-            <img src="images/hero_bg.jpg" class="hero-img">
-            <div class="hero-content">
-                <h2 id="h-title">EXPLORE<br>THE SUMMIT</h2>
-            </div>
+        
         </section>
 
         <section id="vision" class="section">
@@ -58,19 +54,25 @@
             <div class="grid-levels" id="grid-container"></div>
         </section>
 
+        <section id="video-archive" class="section">
+            <span class="hud-label">// 02 CINEMATIC ARCHIVE</span>
+            <h2 class="sec-title-large">JOURNEY FILMS</h2>
+            <div class="video-grid" id="video-container"></div>
+        </section>
+
         <section id="education" class="section">
-            <span class="hud-label">// 02 MOUNTAIN ACADEMY</span>
+            <span class="hud-label">// 03 MOUNTAIN ACADEMY</span>
             <h2 class="sec-title-large">MOUNTAIN<br>STUDY</h2>
             <div class="edu-grid" id="edu-container"></div>
         </section>
 
         <section id="quotes" class="section">
-            <span class="hud-label">// 03 SUMMIT STORIES</span>
+            <span class="hud-label">// 04 SUMMIT STORIES</span>
             <div class="quote-grid" id="quote-container"></div>
         </section>
 
         <section id="team" class="section">
-            <span class="hud-label">// 04 MEET THE CREW</span>
+            <span class="hud-label">// 05 MEET THE CREW</span>
             <div class="team-character-select" id="team-container"></div>
         </section>
     </main>
@@ -78,7 +80,7 @@
     <div id="detail-scene" class="custom-modal">
         <button class="close-scene" onclick="closeTrip()">CLOSE [ESC]</button>
         <div class="scene-body">
-            <div class="modal-media album-wrapper">
+            <div class="modal-media-wrapper album-wrapper">
                 <div class="main-img-container">
                     <img id="d-img" src="" class="modal-img">
                     <div class="slider-controls">
@@ -102,7 +104,7 @@
     <div id="team-modal" class="custom-modal">
         <button class="close-scene" onclick="closeTeam()">CLOSE [ESC]</button>
         <div class="scene-body">
-            <div class="modal-media"><img id="t-img" src="" class="modal-img"></div>
+            <div class="modal-media-wrapper"><img id="t-img" src="" class="modal-img"></div>
             <div class="modal-info">
                 <span class="hud-label" id="t-role">// ROLE</span>
                 <h1 id="t-name"></h1>
