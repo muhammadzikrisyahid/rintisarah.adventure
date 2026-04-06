@@ -4,107 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RINTIS ARAH // EXPEDITION ARCHIVE</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="noise-overlay"></div>
-    <div id="cursor"></div>
-
     <div id="intro-layer">
-        <div class="intro-box">
-            <h1 class="intro-title">RINTIS ARAH</h1>
-            <button onclick="startApp()" class="btn-start">INITIATE EXPEDITION</button>
-        </div>
+        <h1 class="intro-title">RINTIS ARAH</h1>
+        <button onclick="startApp()" class="btn-primary">INITIATE EXPEDITION</button>
     </div>
 
     <nav>
         <div class="logo" onclick="lenis.scrollTo(0)">R<span>.</span>A</div>
-        
-        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-        <label for="menu-toggle" class="hamburger-label">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </label>
-
-        <div class="hud-center menu-items">
-            <div class="hud-item" onclick="toggleTheme()">THEME</div>
+        <div class="hud-center">
+            <div class="hud-item" onclick="lenis.scrollTo('#vision')">VISION</div>
             <div class="hud-item" onclick="lenis.scrollTo('#archive')">MISSIONS</div>
-            <div class="hud-item" onclick="lenis.scrollTo('#education')">ACADEMY</div>
-            <div class="hud-item mobile-only" onclick="lenis.scrollTo('#quotes')">STORIES</div>
-            <div class="hud-item mobile-only" onclick="lenis.scrollTo('#team')">CREW</div>
+            <div class="hud-item" onclick="lenis.scrollTo('#education')">STUDY</div>
+            <div class="hud-item" onclick="lenis.scrollTo('#team')">CREW</div>
         </div>
-        <button class="btn-primary nav-btn desktop-only" onclick="lenis.scrollTo('#team')">CREW</button>
     </nav>
 
     <main id="main-scroll">
-        
         <section class="hero">
-            <div class="hero-visual">
-                <div class="vignette"></div>
-                <img src="https://images.unsplash.com/photo-1578165217121-87a419409848?q=80&w=1920&auto=format&fit=crop" class="hero-img-base" alt="Hero Mountain View">
-            </div>
+            <div class="vignette"></div>
+            <img src="images/hero_bg.jpg" class="hero-img">
             <div class="hero-content">
                 <h2 id="h-title">EXPLORE<br>THE SUMMIT</h2>
             </div>
         </section>
 
-        <section id="archive" class="section">
-            <div class="sec-header">
-                <span class="hud-label">// 01 SELECT MISSION</span>
-                <input type="text" id="mountain-search" placeholder="CARI GUNUNG...">
-            </div>
-            <div class="grid-levels" id="grid-container">
+        <section id="vision" class="section">
+            <div class="vision-box">
+                <span class="hud-label">// VISION & MISSION</span>
+                <h2 class="sec-title-large">MERAWAT KENANGAN,<br>MENEMBUS BATAS.</h2>
+                <div class="vision-grid">
+                    <div class="v-card">
+                        <h3>VISION</h3>
+                        <p>Menjadi arsip perjalanan pendakian paling berpengaruh yang mengutamakan edukasi keselamatan dan dokumentasi sinematik di Indonesia.</p>
+                    </div>
+                    <div class="v-card">
+                        <h3>MISSION</h3>
+                        <p>Memberikan pengalaman pendakian yang aman, mengedukasi etika pegunungan, dan merawat setiap momen sebagai karya seni digital.</p>
+                    </div>
                 </div>
+            </div>
         </section>
 
-        <section id="quotes" class="section">
-            <div class="sec-header">
-                <span class="hud-label">// 02 SUMMIT STORIES</span>
-                <h2 class="sec-title-large">KATA MEREKA</h2>
-            </div>
-            <div class="quote-grid" id="quote-container">
-                </div>
+        <section id="archive" class="section">
+            <span class="hud-label">// 01 MISSIONS (EXPEDITION & EXPLORE)</span>
+            <div class="grid-levels" id="grid-container"></div>
         </section>
 
         <section id="education" class="section">
-            <div class="sec-header">
-                <span class="hud-label">// 03 MOUNTAIN ACADEMY</span>
-                <h2 class="sec-title-large">EDUCATION</h2>
-            </div>
-            <div class="edu-grid" id="edu-container">
-                </div>
+            <span class="hud-label">// 02 MOUNTAIN ACADEMY</span>
+            <h2 class="sec-title-large">MOUNTAIN<br>STUDY</h2>
+            <div class="edu-grid" id="edu-container"></div>
+        </section>
+
+        <section id="quotes" class="section">
+            <span class="hud-label">// 03 SUMMIT STORIES</span>
+            <div class="quote-grid" id="quote-container"></div>
         </section>
 
         <section id="team" class="section">
-            <div class="sec-header">
-                <span class="hud-label">// 04 MEET THE CREW</span>
-                <h2 class="sec-title-large">THE TEAM</h2>
-            </div>
-            <div class="team-character-select" id="team-container">
-                </div>
-        </section>
-
-        <section id="about" class="section">
-            <div class="about-grid">
-                <div class="about-text">
-                    <span class="hud-label">// THE ARCHIVE</span>
-                    <h2 class="sec-title-large">RINTIS ARAH</h2>
-                    <p>Lahir dari kerinduan akan sunyinya puncak dan dinginnya kabut. Rintis Arah bukan sekadar penyedia jasa open trip, melainkan kawan perjalanan yang mengutamakan keselamatan, edukasi, dan dokumentasi sinematik.</p>
-                    <p>Kami percaya setiap pendakian adalah arsip kenangan yang layak disimpan selamanya.</p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-box"><b>50+</b><br><small>SUMMITS REACHED</small></div>
-                    <div class="stat-box"><b>100%</b><br><small>SAFETY RECORD</small></div>
-                </div>
-            </div>
+            <span class="hud-label">// 04 MEET THE CREW</span>
+            <div class="team-character-select" id="team-container"></div>
         </section>
     </main>
 
@@ -113,7 +80,7 @@
         <div class="scene-body">
             <div class="modal-media album-wrapper">
                 <div class="main-img-container">
-                    <img id="d-img" src="" class="modal-img" alt="Detail Trip Image">
+                    <img id="d-img" src="" class="modal-img">
                     <div class="slider-controls">
                         <button onclick="prevImg()" class="slide-btn">PREV</button>
                         <button onclick="nextImg()" class="slide-btn">NEXT</button>
@@ -121,7 +88,6 @@
                 </div>
                 <div id="img-counter" class="img-counter">1 / 1</div>
             </div>
-            
             <div class="modal-info">
                 <h1 id="d-name"></h1>
                 <p id="d-desc"></p>
@@ -129,7 +95,6 @@
                     <div class="stat-box"><small>ALTITUDE</small><br><b id="d-alt"></b></div>
                     <div class="stat-box"><small>PRICE</small><br><b id="d-price"></b></div>
                 </div>
-                <button class="btn-primary BOOK-BTN">BOOK NOW</button>
             </div>
         </div>
     </div>
@@ -137,39 +102,18 @@
     <div id="team-modal" class="custom-modal">
         <button class="close-scene" onclick="closeTeam()">CLOSE [ESC]</button>
         <div class="scene-body">
-            <div class="modal-media"><img id="t-img" src="" class="modal-img" alt="Team Member Detail"></div>
+            <div class="modal-media"><img id="t-img" src="" class="modal-img"></div>
             <div class="modal-info">
                 <span class="hud-label" id="t-role">// ROLE</span>
                 <h1 id="t-name"></h1>
                 <p id="t-bio"></p>
                 <div class="modal-stats">
-                    <div class="stat-box"><small>EXPEDITIONS</small><br><b id="t-exp"></b></div>
+                    <div class="stat-box"><small>EXPEDITION</small><br><b id="t-exp"></b></div>
                     <div class="stat-box"><small>SPECIALTY</small><br><b id="t-spec"></b></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <footer id="footer">
-        <div class="footer-content">
-            <div class="footer-brand"><h2 class="logo">R<span>.</span>A</h2><p>EXPEDITION & ARCHIVE</p></div>
-            <div class="footer-info">
-                <div class="info-group">
-                    <small>CONTACT US</small>
-                    <p>WhatsApp: +62 812-RA-ADVENTURE</p>
-                    <p>IG: @rintisarah</p>
-                </div>
-                <div class="info-group">
-                    <small>OFFICE</small>
-                    <p>Jl. Margonda Raya, Depok</p>
-                    <p>Jawa Barat - Indonesia</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <small>&copy; 2026 RINTIS ARAH. ALL RIGHTS RESERVED.</small>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
